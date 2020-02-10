@@ -1,0 +1,17 @@
+.A {
+  transition: all 2s ease-in;
+}
+
+.A:hover {
+  width: 40%;
+  background-color: #fff;
+}
+
+div {
+  transition: all 2s ease-in;
+}
+
+.test {
+  background-color: #da6;
+  transition: opacity 2s linear;
+}
