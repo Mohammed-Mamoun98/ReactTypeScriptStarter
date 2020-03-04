@@ -1,4 +1,8 @@
-import { RECEIVE_API_DATA } from "../actions/action";
+import {
+  RECEIVE_API_DATA,
+  REQUEST_API_DATA_1,
+  RECEIVE_API_DATA_1
+} from "../actions/action";
 
 interface isType {
   tasks: Array<any>;
@@ -24,6 +28,9 @@ const tasksReducer = (state: any = {}, action: any) => {
     case RECEIVE_API_DATA:
       console.log("api is called and data is ", action.data);
       return action.data;
+    case RECEIVE_API_DATA_1:
+      console.log("POST api is called and data is ", action);
+      return { ...state, data: action.data };
     default:
       return state;
   }

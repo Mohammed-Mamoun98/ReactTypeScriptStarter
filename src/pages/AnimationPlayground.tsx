@@ -6,8 +6,8 @@ import { Spring } from "react-spring/renderprops";
 const Animated = (Props: any) => {
   return (
     <Spring
-      from={{ opacity: 0 }}
-      to={{ opacity: 1 }}
+      from={{ opacity: 0, marginTop: "-500px" }}
+      to={{ opacity: 1, marginTop: "0" }}
       config={{ duration: 100, delay: 0 }}
     >
       {props => <div style={props}>{Props.children}</div>}
@@ -27,7 +27,7 @@ const AnimationPG = (props: any) => {
   const AcontentProps = useSpring({
     from: {},
     to: { width: greetingStatus ? "20%" : "0%" },
-    config: { delay: 0, duration: 1 }
+    config: { delay: 0, duration: 1000 }
   });
   return (
     <div className="container">

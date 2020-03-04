@@ -111,7 +111,8 @@ export default function MultipleSelect() {
           value={personName}
           onChange={handleChange}
           input={<Input />}
-          renderValue={selected => (selected as string[]).join(", ")}
+          // renderValue={selected => (selected as string[]).join(", ")}
+          renderValue={selected => ""}
           MenuProps={MenuProps}
           disableUnderline
         >

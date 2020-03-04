@@ -7,7 +7,9 @@ import { Provider, useSelector } from "react-redux";
 import {
   RECEIVE_API_DATA,
   requestApi,
-  REQUEST_API_DATA
+  REQUEST_API_DATA,
+  REQUEST_API_DATA_1,
+  RECEIVE_API_DATA_1
 } from "./redux/actions/action";
 import Router from "./Router/BrowserRouter";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -45,6 +47,7 @@ const App: React.FC = () => {
   store.dispatch({ type: "" });
 
   store.dispatch<any>({ type: REQUEST_API_DATA });
+  store.dispatch<any>({ type: REQUEST_API_DATA_1 });
 
   return (
     <Provider store={store}>

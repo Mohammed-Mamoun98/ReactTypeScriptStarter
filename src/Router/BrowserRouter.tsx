@@ -7,6 +7,8 @@ import MultipleSelect from "../pages/Select";
 import SideNav from "../components/SideNav";
 import AnimationPG from "../pages/AnimationPlayground";
 import Home from "../pages/Home";
+import MultiOption from "../pages/MultiOption";
+import Layout from "../pages/LayoutTest";
 
 const Router: React.FC = () => {
   return (
@@ -17,6 +19,8 @@ const Router: React.FC = () => {
       <Route component={MultipleSelect} path="/select" exact />
       <Route component={Home} path="/home" exact />
       <Route component={AnimationPG} path="/anim" exact />
+      <Route component={MultiOption} path="/" exact />
+      <Route component={Layout} path="/layout" exact />
     </BrowserRouter>
   );
 };
