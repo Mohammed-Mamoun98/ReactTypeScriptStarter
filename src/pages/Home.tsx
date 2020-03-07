@@ -3,9 +3,10 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { KeyboardArrowDown } from "@material-ui/icons";
-import { CardActionArea, Tabs, Tab, Paper } from "@material-ui/core";
+import { CardActionArea, Tabs, Tab, Paper, Card } from "@material-ui/core";
 import CustomSelect from "../components/customSelect";
 import DatePicker from "../components/picker";
+import PopOver from "../components/popover";
 
 interface person {
   name: string;
@@ -96,7 +97,19 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <CustomSelect />
+      <CustomSelect single />
+      <PopOver style={{ margin: "5rem" }} position={{ bottom: 50, right: -90 }}>
+        <Card
+          style={{
+            height: "2rem",
+            backgroundColor: "#f4f4f4",
+            textAlign: "center"
+          }}
+        >
+          {" "}
+          hello
+        </Card>
+      </PopOver>
       <div className="" style={{ marginTop: "10rem" }}>
         <DatePicker onChange={onChange} />
       </div>

@@ -1,63 +1,83 @@
 import React, { useState } from "react";
-import { Button, Menu, MenuItem } from "@material-ui/core";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  ClickAwayListener,
+  Card
+} from "@material-ui/core";
 import { KeyboardArrowDown } from "@material-ui/icons";
 
-interface PopOverProps {
+interface Position {
   top?: number;
+  bottom?: number;
+  right?: number;
+  left?: number;
 }
-const PopOver = (props: any) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [title, setTitle] = React.useState<string>("Smart Search");
+
+interface PopOverProps {
+  position?: Position;
+  single?: boolean;
+  style?: any;
+  children: any;
+}
+const PopOver = (props: PopOverProps) => {
+  const [title, setTitle] = React.useState<string>("Smart ");
+  const [open, setOpen] = useState<Boolean>(false);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     console.log("Event", event);
-
-    setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (e: any) => {
+  const handlePick = (e: any) => {
     const selectedTitle = e.nativeEvent.target.outerText;
+    setTitle(selectedTitle);
+    if (props.single) handleClose();
+  };
 
-    const value = selectedTitle ? selectedTitle : "Smart Search";
-    setTitle(value);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    setAnchorEl(null);
+  const handleOpen = (e: any) => {
+    setOpen(true);
   };
 
   return (
-    <div className="" style={{ display: "flex", position: "relative" }}>
-      <Button
-        // fullWidth
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        endIcon={<KeyboardArrowDown />}
-        style={{ marginRight: "3rem" }}
+    <ClickAwayListener onClickAway={handleClose}>
+      <div
+        className=""
+        style={{ position: "relative", width: "fit-content", ...props.style }}
       >
-        {title}
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        style={{ position: "absolute", top: props.top }}
-        // anchorOrigin={{
-        //   vertical: "center",
-        //   horizontal: "left"
-        // }}
-        // transformOrigin={{
-        //   vertical: "bottom",
-        //   horizontal: "right"
-        // }}
-      >
-        {/* the min width will be a prop shared between buttun and first menu item */}
-        <MenuItem onClick={handleClose} style={{ minWidth: "10rem" }}>
-          age
-        </MenuItem>
-      </Menu>
-    </div>
+        <Button
+          // fullWidth
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleOpen}
+          endIcon={<KeyboardArrowDown />}
+          style={{ marginRight: "3rem" }}
+        >
+          {title}
+        </Button>
+        {open && (
+          <Card
+            className=""
+            style={{
+              position: "absolute",
+              // top: 0,
+              width: "100%",
+              ...props.position
+            }}
+          >
+            {/* <MenuItem onClick={handlePick}>hello 1</MenuItem>
+            <MenuItem onClick={handlePick}>hello 2</MenuItem>
+            <MenuItem onClick={handlePick}>hello 3</MenuItem> */}
+
+            {props.children}
+          </Card>
+        )}
+      </div>
+    </ClickAwayListener>
   );
 };
 

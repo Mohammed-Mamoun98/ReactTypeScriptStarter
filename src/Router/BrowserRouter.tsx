@@ -9,6 +9,7 @@ import AnimationPG from "../pages/AnimationPlayground";
 import Home from "../pages/Home";
 import MultiOption from "../pages/MultiOption";
 import Layout from "../pages/LayoutTest";
+import HookTest from "../pages/memoTest";
 
 const Router: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Router: React.FC = () => {
       <Route component={AnimationPG} path="/anim" exact />
       <Route component={MultiOption} path="/" exact />
       <Route component={Layout} path="/layout" exact />
+      <Route component={HookTest} path="/hook" exact />
     </BrowserRouter>
   );
 };

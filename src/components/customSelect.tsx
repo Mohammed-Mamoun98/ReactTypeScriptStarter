@@ -4,7 +4,8 @@ import {
   Menu,
   MenuItem,
   ClickAwayListener,
-  Card
+  Card,
+  CardActionArea
 } from "@material-ui/core";
 import { KeyboardArrowDown } from "@material-ui/icons";
 
@@ -19,7 +20,13 @@ const CustomSelect = (props: any) => {
     console.log("Event", event);
   };
 
-  const handleClose = (e: any) => {
+  const handlePick = (e: any) => {
+    const selectedTitle = e.nativeEvent.target.outerText;
+    setTitle(selectedTitle);
+    if (props.single) handleClose();
+  };
+
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -29,46 +36,44 @@ const CustomSelect = (props: any) => {
 
   return (
     <ClickAwayListener onClickAway={handleClose}>
-      <div className="" style={{ position: "relative", width: "fit-content" }}>
-        <Button
-          // fullWidth
+      <div className="" style={{ position: "relative" }}>
+        {/* <Button
+          fullWidth
           aria-controls="simple-menu"
           aria-haspopup="true"
           onClick={handleOpen}
           endIcon={<KeyboardArrowDown />}
-          style={{ marginRight: "3rem" }}
         >
           {title}
-        </Button>
+        </Button> */}
+        <CardActionArea
+          onClick={handleOpen}
+          style={{
+            width: "fit-content",
+            padding: " 0.5rem 1rem",
+            borderRadius: "0.5rem",
+            display: "flex",
+            justifyContent: "space-between"
+          }}
+        >
+          <div className="" style={{ marginRight: "2rem" }}>
+            {title}
+          </div>
+          <KeyboardArrowDown />
+        </CardActionArea>
         {open && (
           <Card
             className=""
-            style={{ position: "absolute", top: 0, width: "100%" }}
+            style={{
+              position: "absolute",
+              top: 0,
+              width: "fit-content",
+              transition: "width 1s ease-in-out"
+            }}
           >
-            <MenuItem
-              onClick={(e: any) => {
-                const selectedTitle = e.nativeEvent.target.outerText;
-                console.log(selectedTitle);
-              }}
-            >
-              hello
-            </MenuItem>
-            <MenuItem
-              onClick={(e: any) => {
-                const selectedTitle = e.nativeEvent.target.outerText;
-                console.log(selectedTitle);
-              }}
-            >
-              hello
-            </MenuItem>
-            <MenuItem
-              onClick={(e: any) => {
-                const selectedTitle = e.nativeEvent.target.outerText;
-                console.log(selectedTitle);
-              }}
-            >
-              hello
-            </MenuItem>
+            <MenuItem onClick={handlePick}>hello 1alknalgn;l</MenuItem>
+            <MenuItem onClick={handlePick}>hello 2</MenuItem>
+            <MenuItem onClick={handlePick}>hello 3</MenuItem>
           </Card>
         )}
       </div>
