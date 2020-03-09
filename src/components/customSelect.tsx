@@ -13,6 +13,9 @@ interface PopOverProps {
   top?: number;
 }
 const CustomSelect = (props: any) => {
+  console.log("Custom select renderd");
+  console.log(props.name);
+
   const [title, setTitle] = React.useState<string>("Smart ");
   const [open, setOpen] = useState<Boolean>(false);
 
@@ -50,6 +53,7 @@ const CustomSelect = (props: any) => {
           onClick={handleOpen}
           style={{
             width: "fit-content",
+            minWidth: "100%",
             padding: " 0.5rem 1rem",
             borderRadius: "0.5rem",
             display: "flex",
@@ -67,11 +71,13 @@ const CustomSelect = (props: any) => {
             style={{
               position: "absolute",
               top: 0,
-              width: "fit-content",
-              transition: "width 1s ease-in-out"
+              transition: "width 1s ease-in-out",
+              minWidth: "100%"
             }}
           >
-            <MenuItem onClick={handlePick}>hello 1alknalgn;l</MenuItem>
+            <MenuItem style={{ minWidth: "100%" }} onClick={handlePick}>
+              hello{" "}
+            </MenuItem>
             <MenuItem onClick={handlePick}>hello 2</MenuItem>
             <MenuItem onClick={handlePick}>hello 3</MenuItem>
           </Card>

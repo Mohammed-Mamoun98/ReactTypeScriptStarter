@@ -1,7 +1,8 @@
 import {
   RECEIVE_API_DATA,
   REQUEST_API_DATA_1,
-  RECEIVE_API_DATA_1
+  RECEIVE_API_DATA_1,
+  CHANGE_MSG
 } from "../actions/action";
 
 interface isType {
@@ -19,18 +20,18 @@ type Todos = Array<Task>;
 
 const todos: Todos = [{ id: 1, title: "" }];
 
-const tasksReducer = (state: any = {}, action: any) => {
+const tasksReducer = (state: any = { msg: "helo" }, action: any) => {
   switch (action.type) {
     case "plus":
       return state.count + 1;
     case "minus":
       return state.count - 1;
     case RECEIVE_API_DATA:
-      console.log("api is called and data is ", action.data);
       return action.data;
     case RECEIVE_API_DATA_1:
-      console.log("POST api is called and data is ", action);
       return { ...state, data: action.data };
+    case CHANGE_MSG:
+      return { ...state, msg: action.msg };
     default:
       return state;
   }

@@ -10,6 +10,7 @@ import Home from "../pages/Home";
 import MultiOption from "../pages/MultiOption";
 import Layout from "../pages/LayoutTest";
 import HookTest from "../pages/memoTest";
+import SelectorTest from "../pages/selectorTest";
 
 const Router: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const Router: React.FC = () => {
       <Route component={MultiOption} path="/" exact />
       <Route component={Layout} path="/layout" exact />
       <Route component={HookTest} path="/hook" exact />
+      <Route component={SelectorTest} path="/selector" exact />
     </BrowserRouter>
   );
 };

@@ -31,23 +31,23 @@ const Yes: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  store.subscribe(() => {
-    console.log(store.getState());
-  });
-  const [data, setData] = useState<data>({ title: "" });
-  const url = "https://jsonplaceholder.typicode.com/todos/1";
+  // store.subscribe(() => {
+  //   console.log(store.getState());
+  // });
+  // const [data, setData] = useState<data>({ title: "" });
+  // const url = "https://jsonplaceholder.typicode.com/todos/1";
 
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(res => setData(res))
-      .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(res => setData(res))
+  //     .catch(err => console.log(err));
+  // }, []);
 
-  store.dispatch({ type: "" });
+  // store.dispatch({ type: "" });
 
-  store.dispatch<any>({ type: REQUEST_API_DATA });
-  store.dispatch<any>({ type: REQUEST_API_DATA_1 });
+  // store.dispatch<any>({ type: REQUEST_API_DATA });
+  // store.dispatch<any>({ type: REQUEST_API_DATA_1 });
 
   return (
     <Provider store={store}>
