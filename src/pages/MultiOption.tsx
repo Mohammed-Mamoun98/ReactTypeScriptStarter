@@ -1,5 +1,6 @@
 import React from "react";
 import { Chip } from "@material-ui/core";
+import Chart from "../components/donutChart";
 
 const OptionsDiv = (props: any) => {
   return (
@@ -27,11 +28,16 @@ const MultiOption = (props: any) => {
       style={{
         minHeight: "50vh",
         backgroundColor: "#f4f4f4",
-        minWidth: "5vw",
-        maxWidth: "13rem"
+        minWidth: "50vw",
+        maxWidth: "13rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
       }}
     >
-      <OptionsDiv options={["hello", "world"]} />
+      {/* <OptionsDiv options={["hello", "world"]} /> */}
+
+      <Chart />
     </div>
   );
 };

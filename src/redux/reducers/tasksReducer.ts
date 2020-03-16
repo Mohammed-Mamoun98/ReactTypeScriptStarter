@@ -19,8 +19,15 @@ const task = {} as Task;
 type Todos = Array<Task>;
 
 const todos: Todos = [{ id: 1, title: "" }];
+export interface IinitialState {
+  msg: string;
+  count: number;
+}
 
-const tasksReducer = (state: any = { msg: "helo" }, action: any) => {
+const tasksReducer = (
+  state: IinitialState = { msg: "helo", count: 0 },
+  action: any
+) => {
   switch (action.type) {
     case "plus":
       return state.count + 1;

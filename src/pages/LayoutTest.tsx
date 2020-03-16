@@ -15,10 +15,10 @@ const Layout = (props: any) => {
   const dispatch = useDispatch();
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
-  const [data, loaded, error] = useFetch(
+  const { data, loading, error } = useFetch(
     "https://jsonplaceholder.typicode.com/todos/1"
   );
-  console.log("data from useFetch " + data + " loaded " + loaded);
+  console.log("data from useFetch " + data + " loaded " + loading);
 
   const [current, setCurrent] = useState(1);
   const [rowsPerPAge, setRowsPerPage] = useState(10);

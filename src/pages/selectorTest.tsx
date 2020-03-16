@@ -3,9 +3,14 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeMsg } from "../redux/actions/action";
 import useFetch from "../hooks/useFetch";
+import { Task } from "../models/task-model";
+import { IRootState } from "../models/rootState";
+import UseStore from "../hooks/useStore";
+
 interface IYes {
   count: number;
 }
+
 //hello world is only rerender only when it's props changing but without it it will rerender when parent state changed!
 const HelloWorld = React.memo((props: IYes) => {
   console.log("hello world is rerender");
@@ -28,23 +33,47 @@ const Yes = (props: IYes) => {
   );
 };
 const SelectorTest = (props: any) => {
+  const NewState = UseStore();
+
   const [renders, setRenders] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
   const [url, setUrl] = useState<string>(
     "https://jsonplaceholder.typicode.com/todos/2"
   );
   const [call, setCall] = useState<boolean>(false);
+  const [raw, setRaw] = useState<Task>({
+    title: "",
+    id: 1,
+    useId: 1,
+    completed: false
+  });
+  const {
+    data,
+    loading,
+    error
+  }: { data: Task | null; loading: Boolean; error: string } = useFetch(
+    url,
+    call
+  );
 
-  const [data, loading] = useFetch(url, call);
-  if (!!data) {
-    console.log("data is here", data);
-  }
+  useEffect(() => {
+    if (!!data) {
+      console.log("data is here", data);
+      console.log(data);
+      setRaw(data);
+
+      // setRawData(data);
+      // setRawData({data.valueOf()})
+      // setRawData({...data})
+    }
+  }, [data]);
 
   const dispatch = useDispatch();
   //when state change the compoent will rerender like setState
-  const state = useSelector(state => state);
+  const state = useSelector((state: IRootState) => state);
+  console.log("current state of store is ", state.tasks);
 
-  console.log("store state is ", state);
+  console.log("store state is ", NewState);
 
   console.log("selector rerender");
 
@@ -86,7 +115,7 @@ const SelectorTest = (props: any) => {
         value={url}
         style={{ minWidth: "20rem", minHeight: "3rem" }}
       />
-      {!!data && <h3>{data.title}</h3>}
+      {!!data && <h3>{raw.title}</h3>}
       <HelloWorld count={count} />
       <Yes count={count} />
     </div>

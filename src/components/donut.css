@@ -1,0 +1,14 @@
+.chart {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.otherChart {
+  position: absolute;
+  top: 0;
+}
