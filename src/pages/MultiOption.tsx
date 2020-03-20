@@ -22,6 +22,20 @@ const OptionsDiv = (props: any) => {
 };
 
 const MultiOption = (props: any) => {
+  const data = [
+    {
+      value: 50,
+      color: "gray"
+    },
+    {
+      value: 30,
+      color: "blue"
+    },
+    {
+      value: 20,
+      color: "green"
+    }
+  ];
   return (
     <div
       className=""
@@ -37,7 +51,7 @@ const MultiOption = (props: any) => {
     >
       {/* <OptionsDiv options={["hello", "world"]} /> */}
 
-      <Chart />
+      <Chart data={data} />
     </div>
   );
 };

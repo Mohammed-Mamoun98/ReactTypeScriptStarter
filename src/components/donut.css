@@ -1,5 +1,8 @@
 .chart {
+  transform: rotateX(180deg);
+
   transform: rotateY(180deg);
+
   position: absolute;
   top: 0;
 }
@@ -10,5 +13,19 @@
 
 .otherChart {
   position: absolute;
+  /* transform: rotateX(90deg); */
+  /* transform: rotateY(180deg); */
+
   top: 0;
+}
+
+.otherChart-1 {
+  top: 0;
+  position: absolute;
+}
+
+.otherChart-2 {
+}
+
+.otherChart-3 {
 }
