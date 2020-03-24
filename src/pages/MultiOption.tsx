@@ -1,6 +1,7 @@
 import React from "react";
 import { Chip } from "@material-ui/core";
 import Chart from "../components/donutChart";
+import "../components/donut.css";
 
 const OptionsDiv = (props: any) => {
   return (
@@ -24,16 +25,16 @@ const OptionsDiv = (props: any) => {
 const MultiOption = (props: any) => {
   const data = [
     {
-      value: 50,
-      color: "gray"
+      value: 20,
+      color: "green"
     },
     {
       value: 30,
       color: "blue"
     },
     {
-      value: 20,
-      color: "green"
+      value: 50,
+      color: "gray"
     }
   ];
   return (
@@ -50,7 +51,14 @@ const MultiOption = (props: any) => {
       }}
     >
       {/* <OptionsDiv options={["hello", "world"]} /> */}
+      <div
+        className=""
+        style={{ backgroundColor: "gray", position: "relative" }}
+      >
+        <p>hover me!</p>
 
+        <div className="arrow-up"></div>
+      </div>
       <Chart data={data} />
     </div>
   );

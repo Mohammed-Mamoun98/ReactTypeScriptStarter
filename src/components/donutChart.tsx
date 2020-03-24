@@ -39,21 +39,32 @@ const Chart = (props: DonutProps) => {
   return (
     <>
       <div className="wrapper">
-        {props.data.map((single: SingleValue, idx: number) => (
-          <div className="otherChart">
-            <CircularProgress
-              variant="static"
-              thickness={4}
-              // color="primary"
-              // value={progress > 40 ? 40 : progress}
-              //we will add 40 + 35 +25
-              //sum the values from it's index to the last index
-              value={progress > findValue(idx) ? findValue(idx) : progress}
-              size={100}
-              style={{ color: single.color }}
-            />
-          </div>
-        ))}
+        {props.data.map((single: SingleValue, idx: number) => {
+          return (
+            <div
+              className="otherChart"
+              style={{ zIndex: idx }}
+              onClick={() => {
+                console.log(idx);
+              }}
+            >
+              <CircularProgress
+                variant="static"
+                thickness={4}
+                // color="primary"
+                // value={progress > 40 ? 40 : progress}
+                //we will add 40 + 35 +25
+                //sum the values from it's index to the last index
+                value={progress > findValue(idx) ? findValue(idx) : progress}
+                size={100}
+                style={{ color: single.color, zIndex: 10 - idx }}
+                onClick={() => {
+                  // console.log(idx);
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
       {/* 
         <div className="otherChart">
