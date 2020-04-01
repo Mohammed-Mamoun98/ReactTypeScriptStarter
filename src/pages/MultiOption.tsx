@@ -2,6 +2,8 @@ import React from "react";
 import { Chip } from "@material-ui/core";
 import Chart from "../components/donutChart";
 import "../components/donut.css";
+import LineDemo from "./../components/react-chart-js-2";
+import { useLocation } from "react-router-dom";
 
 const OptionsDiv = (props: any) => {
   return (
@@ -37,6 +39,11 @@ const MultiOption = (props: any) => {
       color: "gray"
     }
   ];
+
+  const location = useLocation();
+  React.useEffect(() => {
+    console.log("location", location);
+  }, []);
   return (
     <div
       className=""
@@ -51,7 +58,7 @@ const MultiOption = (props: any) => {
       }}
     >
       {/* <OptionsDiv options={["hello", "world"]} /> */}
-      <div
+      {/* <div
         className=""
         style={{ backgroundColor: "gray", position: "relative" }}
       >
@@ -59,7 +66,9 @@ const MultiOption = (props: any) => {
 
         <div className="arrow-up"></div>
       </div>
-      <Chart data={data} />
+      <Chart data={data} /> */}
+
+      <LineDemo />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const data = {
       label: "My First dataset",
       fill: false,
       lineTension: 0.1,
-      backgroundColor: ['rgba(75,192,192,0.4)'],
+      backgroundColor: ["rgba(75,192,192,0.4)"],
       // borderColor: 'rgba(75,192,192,1)',
       // borderCapStyle: 'butt',
       // borderDash: [],
@@ -35,15 +35,13 @@ export default class LineDemo extends Component {
       <div>
         <h2>Line Example</h2>
         <Doughnut
-        width = {700}
-        height = {300}
-        
+          width={700}
+          height={300}
           ref="chart"
           data={data}
-          
-          options={{ hover: { mode: false } , tooltips : {mode : false}   }}
+          options={{ hover: { mode: false }, tooltips: { mode: false } }}
           onElementsClick={elms => {
-            // console.log(rawData[elms[0]._index]);
+            console.log(elms);
           }}
         />
       </div>
@@ -51,7 +49,8 @@ export default class LineDemo extends Component {
   }
 
   componentDidMount() {
-    const { datasets } = this.refs.chart.chartInstance.data;
+    const chart: any = this.refs.chart;
+    const { datasets } = chart.chartInstance.data;
     console.log(datasets[0].data);
   }
 }

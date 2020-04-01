@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, useLocation, Switch } from "react-router-dom";
 import About from "../pages/About";
 import Hello from "../pages/Hello";
 import Filter from "../pages/Filter";
@@ -11,21 +11,34 @@ import MultiOption from "../pages/MultiOption";
 import Layout from "../pages/LayoutTest";
 import HookTest from "../pages/memoTest";
 import SelectorTest from "../pages/selectorTest";
+import Navigator from "./../components/navigator/navigator";
+import SubHeader from "./../layout/subheader";
 
 const Router: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Route component={About} path="/about" exact />
-      <Route component={Hello} path="/hello" exact />
-      <Route component={Filter} path="/filter" exact />
-      <Route component={MultipleSelect} path="/select" exact />
-      <Route component={Home} path="/home" exact />
-      <Route component={AnimationPG} path="/anim" exact />
-      <Route component={MultiOption} path="/" exact />
-      <Route component={Layout} path="/layout" exact />
-      <Route component={HookTest} path="/hook" exact />
-      <Route component={SelectorTest} path="/selector" exact />
-    </BrowserRouter>
+    <>
+      <div
+        className=""
+        style={{ position: "absolute", top: "2rem", left: "50%" }}
+      >
+        {/* <Navigator path={pathname} /> */}
+      </div>
+      <BrowserRouter>
+        <SubHeader />
+        <Switch>
+          <Route component={About} path="/about" exact />
+          <Route component={Hello} path="/hello" exact />
+          <Route component={Filter} path="/filter" exact />
+          <Route component={MultipleSelect} path="/select" exact />
+          <Route component={Home} path="/home" exact />
+          <Route component={AnimationPG} path="/anim" exact />
+          <Route component={MultiOption} path="/" exact />
+          <Route component={Layout} path="/layout" exact />
+          <Route component={HookTest} path="/hook" exact />
+          <Route component={SelectorTest} path="/selector" exact />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 };
 
