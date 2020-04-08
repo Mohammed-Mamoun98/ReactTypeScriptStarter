@@ -13,20 +13,18 @@ import HookTest from "../pages/memoTest";
 import SelectorTest from "../pages/selectorTest";
 import Navigator from "./../components/navigator/navigator";
 import SubHeader from "./../layout/subheader";
+import FlexGrid from "./../pages/flex-grid";
+import ThemePlay from "./../pages/theme-playground";
 
 const Router: React.FC = () => {
   return (
     <>
-      <div
-        className=""
-        style={{ position: "absolute", top: "2rem", left: "50%" }}
-      >
-        {/* <Navigator path={pathname} /> */}
-      </div>
       <BrowserRouter>
         <SubHeader />
         <Switch>
           <Route component={About} path="/about" exact />
+          <Route component={ThemePlay} path="/theme" exact />
+          <Route component={FlexGrid} path="/grid" exact />
           <Route component={Hello} path="/hello" exact />
           <Route component={Filter} path="/filter" exact />
           <Route component={MultipleSelect} path="/select" exact />

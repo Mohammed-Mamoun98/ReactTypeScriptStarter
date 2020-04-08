@@ -2,8 +2,12 @@ import {
   RECEIVE_API_DATA,
   REQUEST_API_DATA_1,
   RECEIVE_API_DATA_1,
-  CHANGE_MSG
+  CHANGE_MSG,
+  SET_THEME,
 } from "../actions/action";
+import { Theme } from "./../../models/thtme";
+import { initialStateValue } from "./stateModels/tasksStateModel";
+import { handleThemePick } from "./../actions/methods";
 
 interface isType {
   tasks: Array<any>;
@@ -19,15 +23,8 @@ const task = {} as Task;
 type Todos = Array<Task>;
 
 const todos: Todos = [{ id: 1, title: "" }];
-export interface IinitialState {
-  msg: string;
-  count: number;
-}
 
-const tasksReducer = (
-  state: IinitialState = { msg: "helo", count: 0 },
-  action: any
-) => {
+const tasksReducer = (state = initialStateValue, action: any) => {
   switch (action.type) {
     case "plus":
       return state.count + 1;
@@ -39,6 +36,9 @@ const tasksReducer = (
       return { ...state, data: action.data };
     case CHANGE_MSG:
       return { ...state, msg: action.msg };
+    case SET_THEME:
+      const theme = handleThemePick(action.theme);
+      return { ...state, selectedTheme: action.theme, theme };
     default:
       return state;
   }

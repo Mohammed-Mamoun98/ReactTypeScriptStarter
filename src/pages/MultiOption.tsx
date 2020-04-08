@@ -1,9 +1,10 @@
 import React from "react";
-import { Chip } from "@material-ui/core";
+import { Chip, Button } from "@material-ui/core";
 import Chart from "../components/donutChart";
 import "../components/donut.css";
 import LineDemo from "./../components/react-chart-js-2";
 import { useLocation } from "react-router-dom";
+import DialogDemo from "./../components/dialog/dialog";
 
 const OptionsDiv = (props: any) => {
   return (
@@ -25,6 +26,9 @@ const OptionsDiv = (props: any) => {
 };
 
 const MultiOption = (props: any) => {
+  const [open, setOpen] = React.useState<boolean>(false);
+  console.log("open", open);
+
   const data = [
     {
       value: 20,
@@ -67,8 +71,21 @@ const MultiOption = (props: any) => {
         <div className="arrow-up"></div>
       </div>
       <Chart data={data} /> */}
-
-      <LineDemo />
+      <Button
+        variant="contained"
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Open Modal
+      </Button>
+      <DialogDemo
+        open={open}
+        onClickAway={() => {
+          setOpen(false);
+        }}
+      />
+      {/* <LineDemo /> */}
     </div>
   );
 };

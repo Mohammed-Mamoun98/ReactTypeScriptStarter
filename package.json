@@ -34,7 +34,9 @@
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
     "sass-loader": "^8.0.2",
-    "typescript": "~3.7.2"
+    "tableau-react": "^1.2.2",
+    "typescript": "~3.7.2",
+    "use-error-boundary": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -16,12 +16,12 @@ interface person {
 const data = [
   {
     name: "berry",
-    age: 27
+    age: 27,
   },
   {
     name: "aly",
-    age: 29
-  }
+    age: 29,
+  },
 ];
 
 //press the button
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
 
   const persons: person[] = [
     { name: "Mido", age: 22 },
-    { name: "mark", age: 25 }
+    { name: "mark", age: 25 },
   ];
 
   const names = persons.map((person: person) => person.name);
@@ -97,13 +97,13 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <CustomSelect single />
+      {/* <CustomSelect single /> */}
       <PopOver style={{ margin: "5rem" }} position={{ bottom: 50, right: -90 }}>
         <Card
           style={{
             height: "2rem",
             backgroundColor: "#f4f4f4",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           {" "}

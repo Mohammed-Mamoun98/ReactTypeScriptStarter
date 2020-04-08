@@ -5,17 +5,24 @@ import {
   MenuItem,
   ClickAwayListener,
   Card,
-  CardActionArea
+  CardActionArea,
 } from "@material-ui/core";
 import { KeyboardArrowDown } from "@material-ui/icons";
 
 interface PopOverProps {
   top?: number;
 }
-const CustomSelect = (props: any) => {
-  console.log("Custom select renderd");
-  console.log(props.name);
+interface DropDown {
+  name: string;
+  id: string;
+}
+interface Select {
+  options: DropDown[];
+  value: string;
+  onSelect: (value: string) => void;
+}
 
+const CustomSelect = (props: Select) => {
   const [title, setTitle] = React.useState<string>("Smart ");
   const [open, setOpen] = useState<Boolean>(false);
 
@@ -24,9 +31,13 @@ const CustomSelect = (props: any) => {
   };
 
   const handlePick = (e: any) => {
-    const selectedTitle = e.nativeEvent.target.outerText;
-    setTitle(selectedTitle);
-    if (props.single) handleClose();
+    const selected = e.nativeEvent.target.outerText;
+    // setTitle(selectedTitle);
+    console.log(selected);
+    if (!!selected) props.onSelect(selected);
+    handleClose();
+
+    // if (props.single) handleClose();
   };
 
   const handleClose = () => {
@@ -40,15 +51,6 @@ const CustomSelect = (props: any) => {
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <div className="" style={{ position: "relative" }}>
-        {/* <Button
-          fullWidth
-          aria-controls="simple-menu"
-          aria-haspopup="true"
-          onClick={handleOpen}
-          endIcon={<KeyboardArrowDown />}
-        >
-          {title}
-        </Button> */}
         <CardActionArea
           onClick={handleOpen}
           style={{
@@ -57,11 +59,11 @@ const CustomSelect = (props: any) => {
             padding: " 0.5rem 1rem",
             borderRadius: "0.5rem",
             display: "flex",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <div className="" style={{ marginRight: "2rem" }}>
-            {title}
+            {props.value}
           </div>
           <KeyboardArrowDown />
         </CardActionArea>
@@ -71,15 +73,18 @@ const CustomSelect = (props: any) => {
             style={{
               position: "absolute",
               top: 0,
-              transition: "width 1s ease-in-out",
-              minWidth: "100%"
+              minWidth: "100%",
             }}
           >
-            <MenuItem style={{ minWidth: "100%" }} onClick={handlePick}>
-              hello{" "}
-            </MenuItem>
-            <MenuItem onClick={handlePick}>hello 2</MenuItem>
-            <MenuItem onClick={handlePick}>hello 3</MenuItem>
+            {props.options.map((value: DropDown) => (
+              <MenuItem
+                style={{ minWidth: "100%" }}
+                onClick={handlePick}
+                key={value.id}
+              >
+                {value.name}
+              </MenuItem>
+            ))}
           </Card>
         )}
       </div>

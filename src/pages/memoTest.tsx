@@ -12,8 +12,8 @@ const HookTest = (props: any) => {
       url: "http://localhost:5000/",
       data: {
         firstName: "Finn",
-        lastName: "Williams"
-      }
+        lastName: "Williams",
+      },
     });
     setData(postRequest.data);
     console.log("fetching ....");
@@ -46,10 +46,10 @@ const HookTest = (props: any) => {
         style={{
           minWidth: "10rem",
           minHeight: "20vh",
-          backgroundColor: "#666"
+          backgroundColor: "#666",
         }}
       >
-        <CustomSelect name={name} />
+        {/* <CustomSelect name={name} /> */}
       </div>
     </div>
   );
