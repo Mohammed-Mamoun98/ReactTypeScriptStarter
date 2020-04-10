@@ -7,6 +7,12 @@ export interface IinitialState {
   count: number;
   theme: Theme;
   selectedTheme: string;
+  historyStack: HistoryObject[];
+}
+
+export interface HistoryObject {
+  path: string;
+  pathName: string;
 }
 
 export const initialStateValue: IinitialState = {
@@ -14,4 +20,8 @@ export const initialStateValue: IinitialState = {
   count: 0,
   theme: dark,
   selectedTheme: "dark",
+  historyStack: [
+    { path: "/home", pathName: "home" },
+    { path: "/about", pathName: "about" },
+  ],
 };

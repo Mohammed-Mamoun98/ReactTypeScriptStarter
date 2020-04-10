@@ -4,9 +4,15 @@ import {
   RECEIVE_API_DATA_1,
   CHANGE_MSG,
   SET_THEME,
+  PUSH_HISTORY,
+  POP_HISTORY,
+  CLEAR_HISTORY,
 } from "../actions/action";
 import { Theme } from "./../../models/thtme";
-import { initialStateValue } from "./stateModels/tasksStateModel";
+import {
+  initialStateValue,
+  HistoryObject,
+} from "./stateModels/tasksStateModel";
 import { handleThemePick } from "./../actions/methods";
 
 interface isType {
@@ -20,12 +26,39 @@ interface Task {
 const task = {} as Task;
 // const newTAsk = new task()
 
+const popHistory = (history: HistoryObject[], times: number) => {
+  for (let index = 0; index < times; index++) {
+    history.pop();
+  }
+  return history;
+};
+
 type Todos = Array<Task>;
 
 const todos: Todos = [{ id: 1, title: "" }];
 
 const tasksReducer = (state = initialStateValue, action: any) => {
   switch (action.type) {
+    case CLEAR_HISTORY:
+      return {
+        ...state,
+        historyStack: [],
+      };
+
+    case POP_HISTORY:
+      const popedHistory = popHistory(state.historyStack, action.times);
+      return {
+        ...state,
+        historyStack: popedHistory,
+      };
+
+    case PUSH_HISTORY:
+      let arr = state.historyStack;
+      arr.push(action.obj);
+      return {
+        ...state,
+        historyStack: arr,
+      };
     case "plus":
       return state.count + 1;
     case "minus":

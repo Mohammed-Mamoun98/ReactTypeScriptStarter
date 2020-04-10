@@ -15,6 +15,7 @@ import Navigator from "./../components/navigator/navigator";
 import SubHeader from "./../layout/subheader";
 import FlexGrid from "./../pages/flex-grid";
 import ThemePlay from "./../pages/theme-playground";
+import ErrorDemo from "./../pages/error-boundry-demo";
 
 const Router: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const Router: React.FC = () => {
         <SubHeader />
         <Switch>
           <Route component={About} path="/about" exact />
+          <Route component={ErrorDemo} path="/error" exact />
           <Route component={ThemePlay} path="/theme" exact />
           <Route component={FlexGrid} path="/grid" exact />
           <Route component={Hello} path="/hello" exact />
