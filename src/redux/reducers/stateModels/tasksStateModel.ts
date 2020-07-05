@@ -8,6 +8,7 @@ export interface IinitialState {
   theme: Theme;
   selectedTheme: string;
   historyStack: HistoryObject[];
+  drawer: boolean;
 }
 
 export interface HistoryObject {
@@ -17,6 +18,7 @@ export interface HistoryObject {
 
 export const initialStateValue: IinitialState = {
   msg: "helo",
+  drawer: false,
   count: 0,
   theme: dark,
   selectedTheme: "dark",

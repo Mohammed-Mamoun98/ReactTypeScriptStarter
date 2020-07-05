@@ -1,13 +1,16 @@
 import React from "react";
 import UseStore from "./../hooks/useStore";
 import "../components/SideNav.css";
+import { Button } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { toggleDrawer } from "../redux/actions/action";
 const ThemePlay = () => {
+  const dispatch = useDispatch();
   const store = UseStore().tasks;
   const { theme } = store;
   return (
     <div
       style={{
-        minWidth: "100rem",
         minHeight: "100vh",
         backgroundColor: theme.backGround,
         textAlign: "center",
@@ -35,6 +38,13 @@ const ThemePlay = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint impedit
           non, libero deserunt praesentium sed!
         </div>
+        <Button
+          onClick={() => {
+            dispatch(toggleDrawer());
+          }}
+        >
+          toggle Drawe
+        </Button>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
   PUSH_HISTORY,
   POP_HISTORY,
   CLEAR_HISTORY,
+  TOGGLE_DRAWER,
 } from "../actions/action";
 import { Theme } from "./../../models/thtme";
 import {
@@ -39,6 +40,11 @@ const todos: Todos = [{ id: 1, title: "" }];
 
 const tasksReducer = (state = initialStateValue, action: any) => {
   switch (action.type) {
+    case TOGGLE_DRAWER:
+      return {
+        ...state,
+        drawer: !state.drawer,
+      };
     case CLEAR_HISTORY:
       return {
         ...state,

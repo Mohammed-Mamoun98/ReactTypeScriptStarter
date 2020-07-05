@@ -9,7 +9,11 @@ export const SET_THEME = "SET_THEME";
 export const PUSH_HISTORY = "PUSH_HISTORY";
 export const POP_HISTORY = "POP_HISTORY";
 export const CLEAR_HISTORY = "CLEAR_HISTORY";
+export const TOGGLE_DRAWER = "TOGGLE_DRAWER";
 
+export const toggleDrawer = () => ({
+  type: TOGGLE_DRAWER,
+});
 export const clearHistory = () => ({
   type: CLEAR_HISTORY,
 });
